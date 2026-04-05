@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brain Focus Lab – Transform Your Mind</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--blue:#1565C0;--light-blue:#1E88E5;--sky:#E3F2FD;--dark:#0D47A1;--white:#fff;--gray:#f5f8ff}
+  body{font-family:'Segoe UI',sans-serif;color:#222;background:#fff}
+
+  nav{background:var(--dark);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+  .logo{color:#fff;font-size:1.4rem;font-weight:700;letter-spacing:1px}
+  .logo span{color:#90CAF9}
+  nav ul{list-style:none;display:flex;gap:28px}
+  nav ul a{color:#cce5ff;text-decoration:none;font-size:.95rem;transition:color .2s}
+  nav ul a:hover{color:#fff}
+  .nav-cta{background:var(--light-blue);color:#fff!important;padding:8px 18px;border-radius:20px;font-weight:600}
+
+  .hero{background:linear-gradient(135deg,var(--dark) 0%,var(--light-blue) 100%);color:#fff;text-align:center;padding:90px 20px 80px}
+  .hero h1{font-size:2.8rem;font-weight:800;line-height:1.2;margin-bottom:16px}
+  .hero h1 span{color:#90CAF9}
+  .hero p{font-size:1.15rem;max-width:620px;margin:0 auto 36px;opacity:.9}
+  .btn-main{display:inline-block;background:#fff;color:var(--dark);padding:15px 40px;border-radius:30px;font-size:1.1rem;font-weight:700;text-decoration:none;box-shadow:0 4px 18px rgba(0,0,0,.25);transition:transform .2s,box-shadow .2s}
+  .btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+  .hero-badges{display:flex;justify-content:center;gap:24px;margin-top:40px;flex-wrap:wrap}
+  .badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:8px 20px;font-size:.85rem;color:#fff}
+
+  section{padding:70px 20px}
+  .container{max-width:1100px;margin:0 auto}
+  h2{font-size:2rem;font-weight:800;color:var(--dark);text-align:center;margin-bottom:10px}
+  .sub{text-align:center;color:#555;margin-bottom:48px;font-size:1rem}
+  .divider{width:60px;height:4px;background:var(--light-blue);border-radius:4px;margin:12px auto 30px}
+
+  .steps{background:var(--gray)}
+  .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px}
+  .step-card{background:#fff;border-radius:16px;padding:30px 24px;text-align:center;box-shadow:0 4px 20px rgba(21,101,192,.1);border-top:4px solid var(--light-blue)}
+  .step-num{width:50px;height:50px;background:var(--light-blue);color:#fff;border-radius:50%;font-size:1.4rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+  .step-card h3{color:var(--dark);margin-bottom:8px;font-size:1.05rem}
+  .step-card p{color:#666;font-size:.9rem;line-height:1.6}
+
+  .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+  .prod-card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 6px 24px rgba(21,101,192,.12);transition:transform .25s,box-shadow .25s;border:1px solid #dceeff}
+  .prod-card:hover{transform:translateY(-6px);box-shadow:0 12px 36px rgba(21,101,192,.2)}
+  .prod-head{background:linear-gradient(135deg,var(--dark),var(--light-blue));padding:28px 20px;text-align:center;color:#fff}
+  .prod-icon{font-size:2.8rem;margin-bottom:8px}
+  .prod-head h3{font-size:1.1rem;font-weight:700}
+  .prod-body{padding:22px 20px}
+  .prod-body p{color:#555;font-size:.9rem;line-height:1.6;margin-bottom:16px}
+  .prod-price{font-size:1.3rem;font-weight:800;color:var(--dark);margin-bottom:16px}
+  .prod-price span{font-size:.85rem;font-weight:400;color:#888;text-decoration:line-through;margin-left:6px}
+  .btn-buy{display:block;background:var(--light-blue);color:#fff;text-align:center;padding:12px;border-radius:24px;font-weight:700;text-decoration:none;font-size:.95rem;transition:background .2s}
+  .btn-buy:hover{background:var(--dark)}
+
+  .blog{background:var(--sky)}
+  .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+  .blog-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 18px rgba(21,101,192,.1);transition:transform .2s}
+  .blog-card:hover{transform:translateY(-4px)}
+  .blog-img{height:140px;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
+  .blog-img.b1{background:linear-gradient(135deg,#1565C0,#42A5F5)}
+  .blog-img.b2{background:linear-gradient(135deg,#0D47A1,#1E88E5)}
+  .blog-img.b3{background:linear-gradient(135deg,#1565C0,#0288D1)}
+  .blog-body{padding:20px}
+  .blog-tag{background:#E3F2FD;color:var(--blue);font-size:.75rem;font-weight:700;padding:4px 12px;border-radius:12px;display:inline-block;margin-bottom:10px}
+  .blog-body h3{color:var(--dark);font-size:1rem;margin-bottom:8px;line-height:1.4}
+  .blog-body p{color:#666;font-size:.88rem;line-height:1.6;margin-bottom:14px}
+  .read-more{color:var(--light-blue);font-weight:700;font-size:.88rem;text-decoration:none}
+
+  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+  .testi{background:var(--sky);border-radius:16px;padding:28px 24px;border-left:5px solid var(--light-blue)}
+  .stars{color:#FFA726;font-size:1.1rem;margin-bottom:10px}
+  .testi p{color:#444;font-style:italic;line-height:1.7;margin-bottom:14px;font-size:.95rem}
+  .testi-name{font-weight:700;color:var(--dark);font-size:.9rem}
+
+  /* TIKTOK SECTION */
+  .tiktok-section{background:var(--gray);padding:70px 20px}
+  .tiktok-wrapper{display:flex;justify-content:center;align-items:center;flex-direction:column;gap:20px}
+  .tiktok-label{display:flex;align-items:center;gap:10px;background:var(--dark);color:#fff;padding:10px 24px;border-radius:30px;font-weight:700;font-size:1rem}
+  .tiktok-label img{width:24px;height:24px}
+  .tiktok-embed-wrap{display:flex;justify-content:center;width:100%}
+
+  .cta-banner{background:linear-gradient(135deg,var(--dark),var(--light-blue));color:#fff;text-align:center;padding:70px 20px}
+  .cta-banner h2{color:#fff;font-size:2.2rem}
+  .cta-banner p{color:#cce5ff;margin:16px auto 32px;max-width:560px;font-size:1.05rem}
+
+  footer{background:#0D47A1;color:#90CAF9;text-align:center;padding:30px 20px;font-size:.88rem}
+  footer a{color:#90CAF9;margin:0 10px;text-decoration:none}
+  footer a:hover{color:#fff}
+  .footer-logo{font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:10px}
+
+  @media(max-width:600px){
+    .hero h1{font-size:1.9rem}
+    nav ul{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">🧠 Brain <span>Focus Lab</span></div>
+  <ul>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#tiktok">TikTok</a></li>
+    <li><a href="https://www.digistore24.com/redir/241171/mxn939/" target="_blank" class="nav-cta">🛒 Shop Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Unlock the Power of Your<br><span>Subconscious Mind</span></h1>
+  <p>Transform your life with professional <strong>Silent Subliminals</strong> — audio programs that rewire your brain, remove mental blocks, and help you focus, succeed & manifest your goals.</p>
+  <a href="https://www.digistore24.com/redir/241171/mxn939/" target="_blank" class="btn-main">🎧 Start Your Transformation →</a>
+  <div class="hero-badges">
+    <div class="badge">✅ 350+ Audio Programs</div>
+    <div class="badge">⭐ 10,000+ Happy Customers</div>
+    <div class="badge">🔒 60-Day Money Back Guarantee</div>
+    <div class="badge">🌙 Listen While You Sleep</div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="steps" id="how">
+  <div class="container">
+    <h2>How Silent Subliminals Work</h2>
+    <div class="divider"></div>
+    <p class="sub">A simple 4-step process that starts working from day one</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Choose Your Goal</h3>
+        <p>Browse 350+ subliminal audio programs covering health, wealth, love, confidence, and more.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Listen Daily</h3>
+        <p>Play the audio while working, jogging, driving, or even sleeping. The more you listen, the stronger the effect.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Brain Rewires</h3>
+        <p>Positive suggestions bypass your conscious resistance and directly reprogram your subconscious beliefs.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h3>Life Transforms</h3>
+        <p>You begin to feel the shift — old negative patterns dissolve and your dream reality starts to manifest.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="container">
+    <h2>Top Subliminal Programs</h2>
+    <div class="divider"></div>
+    <p class="sub">Professionally crafted audio sessions for every area of your life</p>
+    <div class="products-grid">
+      <div class="prod-card">
+        <div class="prod-head">
+          <div class="prod-icon">💰</div>
+          <h3>Wealth & Abundance</h3>
+        </div>
+        <div class="prod-body">
+          <p>Reprogram your money mindset, attract financial flow, and break through scarcity beliefs holding you back.</p>
+          <div class="prod-price">€24.99 <span>€39.99</span></div>
+          <a href="https://www.digistore24.com/redir/241171/mxn939/" target="_blank" class="btn-buy">🛒 Buy Now</a>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-head">
+          <div class="prod-icon">❤️</div>
+          <h3>Love & Relationships</h3>
+        </div>
+        <div class="prod-body">
+          <p>Attract your soulmate, heal relationship wounds, and open your heart to give and receive deep love.</p>
+          <div class="prod-price">€24.99 <span>€39.99</span></div>
+          <a href="https://www.digistore24.com/redir/241171/mxn939/" target="_blank" class="btn-buy">🛒 Buy Now</a>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-head">
+          <div class="prod-icon">🌟</div>
+          <h3>Confidence & Success</h3>
+        </div>
+        <div class="prod-body">
+          <p>Build unstoppable self-belief, eliminate fear of failure, and show up as your most powerful self every day.</p>
+          <div class="prod-price">€24.99 <span>€39.99</span></div>
+          <a href="https://www.digistore24.com/redir/241171/mxn939/" target="_blank" class="btn-buy">🛒 Buy Now</a>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-head">
+          <div class="prod-icon">😴</div>
+          <h3>Better Sleep & Relaxation</h3>
+        </div>
+        <div class="prod-body">
+          <p>Drift into deep, restorative sleep while your subconscious absorbs positive programming throughout the night.</p>
+          <div class="prod-price">€24.99 <span>€39.99</span></div>
+          <a href="https://www.digistore24.com/redir/241171/mxn939/" target="_blank" class="btn-buy">🛒 Buy Now</a>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-head">
+          <div class="prod-icon">🏋️</div>
+          <h3>Weight Loss & Body</h3>
+        </div>
+        <div class="prod-body">
+          <p>Align your subconscious with your ideal body, boost motivation, and make healthy choices effortlessly.</p>
+          <div class="prod-price">€22.99 <span>€35.99</span></div>
+          <a href="https://www.digistore24.com/redir/241171/mxn939/" target="_blank" class="btn-buy">🛒 Buy Now</a>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-head" style="background:linear-gradient(135deg,#FF6F00,#FFA726)">
+          <div class="prod-icon">🎯</div>
+          <h3>Starter Collection (2 Albums)</h3>
+        </div>
+        <div class="prod-body">
+          <p>Perfect for beginners — get 2 powerful albums at a special bundle price and kickstart your transformation today.</p>
+          <div class="prod-price">€32.99 <span>€49.98</span></div>
+          <a href="https://www.digistore24.com/redir/241171/mxn939/" target="_blank" class="btn-buy" style="background:#E65100">🔥 Best Value – Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="container">
+    <h2>Learn About Subliminals</h2>
+    <div class="divider"></div>
+    <p class="sub">Discover the science, tips, and truths behind silent subliminal audio</p>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-img b1">🧠</div>
+        <div class="blog-body">
+          <span class="blog-tag">Science</span>
+          <h3>How Subliminals Rewire Your Brain</h3>
+          <p>Neuroplasticity explains why repeated silent suggestions can literally change the structure of your neural pathways over time...</p>
+          <a href="https://www.digistore24.com/redir/241171/mxn939/" target="_blank" class="read-more">Read More →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img b2">🌙</div>
+        <div class="blog-body">
+          <span class="blog-tag">Tips</span>
+          <h3>Do Subliminals Work While Sleeping?</h3>
+          <p>Many users report the strongest results when listening overnight. Here's what research says about sleep-based subconscious programming...</p>
+          <a href="https://www.digistore24.com/redir/241171/mxn939/" target="_blank" class="read-more">Read More →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img b3">❌</div>
+        <div class="blog-body">
+          <span class="blog-tag">Common Mistakes</span>
+          <h3>10 Mistakes That Block Subliminal Results</h3>
+          <p>Are you listening correctly? Many people unknowingly sabotage their own progress. Avoid these critical errors for faster results...</p>
+          <a href="https://www.digistore24.com/redir/241171/mxn939/" target="_blank" class="read-more">Read More →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <h2>Real Results from Real People</h2>
+    <div class="divider"></div>
+    <p class="sub">Thousands of customers have already transformed their lives</p>
+    <div class="testi-grid">
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p>"My initial skepticism turned into amazement. The audio sessions genuinely helped me achieve inner calm and major improvements in focus and emotional control."</p>
+        <div class="testi-name">— Reto H., Vaduz</div>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p>"After my separation I had no joy in life. The Loss & Grief album helped me let go in a short time and look forward to the future optimistically again."</p>
+        <div class="testi-name">— Gernot S., Neunkirchen</div>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p>"The Trading Success album helped me finally break through the break-even barrier in my 2-year trading career. I can't recommend it enough!"</p>
+        <div class="testi-name">— Thomas M., Vienna</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIKTOK SECTION -->
+<section class="tiktok-section" id="tiktok">
+  <div class="container">
+    <h2>Follow Us on TikTok</h2>
+    <div class="divider"></div>
+    <p class="sub">Get free brain tips, subliminal guides & transformation content daily</p>
+    <div class="tiktok-wrapper">
+      <div class="tiktok-label">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.75a4.85 4.85 0 01-1.02-.06z"/></svg>
+        @brainfocuslab_tips
+      </div>
+      <div class="tiktok-embed-wrap">
+        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@brainfocuslab_tips" data-unique-id="brainfocuslab_tips" data-embed-type="creator" style="max-width: 780px; min-width: 288px;">
+          <section>
+            <a target="_blank" href="https://www.tiktok.com/@brainfocuslab_tips?refer=creator_embed">@brainfocuslab_tips</a>
+          </section>
+        </blockquote>
+        <script async src="https://www.tiktok.com/embed.js"></script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>🧠 Ready to Transform Your Mind?</h2>
+    <p>Join over 10,000 customers who have already unlocked the power of their subconscious. Choose your program and start today!</p>
+    <a href="https://www.digistore24.com/redir/241171/mxn939/" target="_blank" class="btn-main">🚀 Get Started Now – Visit the Shop</a>
+    <p style="margin-top:20px;font-size:.85rem;color:#90CAF9">✅ 60-Day Money Back Guarantee &nbsp;|&nbsp; 🔒 Secure Payment via Digistore24 &nbsp;|&nbsp; 📦 Instant Digital Download</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">🧠 Brain Focus Lab</div>
+  <p style="margin-bottom:12px">Your trusted source for Silent Subliminal audio programs</p>
+  <div>
+    <a href="#how">How It Works</a>
+    <a href="#products">Products</a>
+    <a href="#blog">Blog</a>
+    <a href="#tiktok">TikTok</a>
+    <a href="https://www.digistore24.com/redir/241171/mxn939/" target="_blank">Shop Now</a>
+  </div>
+  <p style="margin-top:16px;color:#5C8AB4;font-size:.8rem">⚠️ This is an affiliate website. We may earn a commission when you purchase through our links. Results may vary.</p>
+</footer>
+
+</body>
+</html>
